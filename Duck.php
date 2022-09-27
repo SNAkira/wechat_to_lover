@@ -27,13 +27,13 @@ class Duck
         $this->appid = $config['appid'];
         $this->appsecret = $config['appsecret'];
         $this->hefengkey = $config['hefengkey'];
-        //$this->hefengcity = $config['hefengcity'];
+        $this->hefengcity = $config['hefengcity'];
         $this->togetherdays = $config['togetherdays'];
         $this->birthday = $config['birthday'];
 
 
         $params = [
-            'location' => $config['hefengcity'],//
+            'location' => $this->hefengcity,//
             'key' => $this->hefengkey
         ];
         $url = 'https://geoapi.qweather.com/v2/city/lookup';
