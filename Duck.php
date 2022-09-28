@@ -71,7 +71,7 @@ class Duck
         return $output_data;
 
     }
-    function get_url($url)
+    public function get_url($url)
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$url); //设置访问的url地址
@@ -120,17 +120,17 @@ class Duck
      */
     public function getWeather ()
     {
-        return $weather = get_url('https://devapi.qweather.com/v7/weather/now?location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0');
+        return $weather = $this->get_url('https://devapi.qweather.com/v7/weather/now?location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0');
     }
 
     public function getIndices ()
     {
-        return $Indices = get_url('https://devapi.qweather.com/v7/indices/1d?type=3&location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0');
+        return $Indices = $this->get_url('https://devapi.qweather.com/v7/indices/1d?type=3&location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0');
     }
 
     public function getCity ()
     {
-        return $City = get_url('https://geoapi.qweather.com/v2/city/lookup?location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0');
+        return $City = $this->get_url('https://geoapi.qweather.com/v2/city/lookup?location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0');
     }
 
 
