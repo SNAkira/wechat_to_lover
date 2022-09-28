@@ -71,7 +71,7 @@ class Duck
         return $output_data;
 
     }
-    public static  function get_url($url)
+    public static function get_url($url)
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$url); //设置访问的url地址
