@@ -109,10 +109,14 @@ class Duck
      */
     public function getWeather ()
     {
+        $headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                      'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+        }
         $location1 = $config['hefengcity'];
         $key1 = $config['hefeng'];
         $url = "https://devapi.qweather.com/v7/weather/now?location={}&key={}".format($location1, $key1);
-        $response = get($url, headers=headers).json();
+        $response = get($url, $headers=$headers).json();
         $weather = $response["now"]["text"];
         $temp = $response["now"]["temp"] + u"\N{DEGREE SIGN}" + "C";
         $humidity = $response["now"]["windDir"];
@@ -121,10 +125,14 @@ class Duck
 
     public function getIndices ()
     {
+        $headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                      'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+        }
         $location1 = $config['hefengcity'];
         $key1 = $config['hefeng'];
         $url = "https://devapi.qweather.com/v7/indices/1d?type=3&location={}&key={}".format($location1, $key1)
-        $response = get($url, headers=headers).json();
+        $response = get($url, $headers=$headers).json();
         return $Indices = $response["daily"]["text"];
     }
 
