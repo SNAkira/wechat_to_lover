@@ -71,17 +71,6 @@ class Duck
         return $output_data;
 
     }
-    public function get_url($url)
-    {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$url); //设置访问的url地址
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);//不输出内容
-        $result = curl_exec($ch);
-        curl_close ($ch);
-        return $result;
-    }
     
     public static function postUrl ($url, $data)
     {
@@ -120,17 +109,17 @@ class Duck
      */
     public function getWeather ()
     {
-        return $weather = $this->get_url('https://devapi.qweather.com/v7/weather/now?location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0');
+        return $weather = $this->getUrl('https://devapi.qweather.com/v7/weather/now?location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0');
     }
 
     public function getIndices ()
     {
-        return $Indices = $this->get_url('https://devapi.qweather.com/v7/indices/1d?type=3&location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0');
+        return $Indices = $this->getUrl('https://devapi.qweather.com/v7/indices/1d?type=3&location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0');
     }
 
     public function getCity ()
     {
-        return $City = $this->get_url('https://geoapi.qweather.com/v2/city/lookup?location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0');
+        return $City = $this->getUrl('https://geoapi.qweather.com/v2/city/lookup?location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0');
     }
 
 
