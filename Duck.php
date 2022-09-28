@@ -27,13 +27,13 @@ class Duck
         $this->appid = $config['appid'];
         $this->appsecret = $config['appsecret'];
         $this->hefengkey = $config['hefengkey'];
-        $this->hefengcity = $config['hefengcity'];
+        //$this->hefengcity = $config['hefengcity'];
         $this->togetherdays = $config['togetherdays'];
         $this->birthday = $config['birthday'];
 
 
         $params = [
-            'location' => $this->hefengcity,//
+            'location' => $config['hefengcity'],//
             'key' => $this->hefengkey
         ];
         $url = 'https://geoapi.qweather.com/v2/city/lookup';
@@ -109,22 +109,34 @@ class Duck
      */
     public function getWeather ()
     {
-        $url = "https://devapi.qweather.com/v7/weather/now?location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0";
-        $response = get($url).json();
-        $weather = $response["now"]["text"];
+        $params = [
+            'location' => $this->hefengcity,
+            'key' => $this->hefengkey
+        ];
+        $url = 'https://devapi.qweather.com/v7/weather/now';
+        $weather = $this->getUrl($url, $params);
         return $weather;
     }
 
     public function getIndices ()
     {
-        $url = "https://devapi.qweather.com/v7/weather/now?location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0";
-        $response = get($url).json();
-        return $Indices = $response["daily"]["text"];
+        $params = [
+            'type' => '3',//穿衣指数3 洗车指数2 运动指数1 ... 和风天气自查
+            'location' => $this->hefengcity,
+            'key' => $this->hefengkey
+        ];
+        $url = 'https://devapi.qweather.com/v7/indices/1d';
+        return $Indices = $this->getUrl($url, $params);
     }
 
     public function getCity ()
     {
-        return $City = '义乌';
+        $params = [
+            'location' => $this->hefengcity,//
+            'key' => $this->hefengkey
+        ];
+        $url = 'https://geoapi.qweather.com/v2/city/lookup';
+        return $City = $this->getUrl($url, $params)['location'][0]['name'];
     }
 
 
