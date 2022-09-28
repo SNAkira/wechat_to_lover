@@ -109,28 +109,28 @@ class Duck
      */
     public function getWeather ()
     {
-        $location1 = $config['hefengcity'];
-        $key1 = $config['hefeng'];
-        $url = "https://devapi.qweather.com/v7/weather/now?location={}&key={}".format($location1, $key1);
-        $response = get($url).json();
-        $weather = $response["now"]["text"];
-        $temp = $response["now"]["temp"];
-        $humidity = $response["now"]["windDir"];
-        return $weather, $temp, $humidity;
+        $location1 = $config['hefengcity']
+        $key1 = $config['hefeng']
+        $url = "https://devapi.qweather.com/v7/weather/now?location={}&key={}".format($location1, $key1)
+        $response = get($url).json()
+        $weather = $response["now"]["text"]
+        $temp = $response["now"]["temp"]
+        $humidity = $response["now"]["windDir"]
+        return $weather, $temp, $humidity
     }
 
     public function getIndices ()
     {
-        $location1 = $config['hefengcity'];
-        $key1 = $config['hefeng'];
+        $location1 = $config['hefengcity']
+        $key1 = $config['hefeng']
         $url = "https://devapi.qweather.com/v7/indices/1d?type=3&location={}&key={}".format($location1, $key1)
-        $response = get($url).json();
-        return $Indices = $response["daily"]["text"];
+        $response = get($url).json()
+        return $Indices = $response["daily"]["text"]
     }
 
     public function getCity ()
     {
-        return $City = '义乌';
+        return $City = '义乌'
     }
 
 
