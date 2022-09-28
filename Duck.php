@@ -109,9 +109,7 @@ class Duck
      */
     public function getWeather ()
     {
-        $location1 = $config['hefengcity'];
-        $key1 = $config['hefeng'];
-        $url = "https://devapi.qweather.com/v7/weather/now?location={}&key={}".format($location1, $key1);
+        $url = "https://devapi.qweather.com/v7/weather/now?location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0";
         $response = get($url).json();
         $weather = $response["now"]["text"];
         return $weather;
@@ -119,9 +117,7 @@ class Duck
 
     public function getIndices ()
     {
-        $location1 = $config['hefengcity'];
-        $key1 = $config['hefeng'];
-        $url = "https://devapi.qweather.com/v7/indices/1d?type=3&location={}&key={}".format($location1, $key1);
+        $url = "https://devapi.qweather.com/v7/weather/now?location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0";
         $response = get($url).json();
         return $Indices = $response["daily"]["text"];
     }
