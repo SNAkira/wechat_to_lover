@@ -119,7 +119,7 @@ class Duck
 
     public function getCity ()
     {
-        return $City = $this->getUrl('https://geoapi.qweather.com/v2/city/lookup?location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0');
+        return $City = $this->getUrl('https://geoapi.qweather.com/v2/city/lookup?location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0')['location'][0]['name'];
     }
 
 
