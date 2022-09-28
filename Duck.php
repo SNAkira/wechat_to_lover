@@ -71,7 +71,18 @@ class Duck
         return $output_data;
 
     }
-
+    public static  function get_url($url)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$url); //设置访问的url地址
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);//不输出内容
+        $result = curl_exec($ch);
+        curl_close ($ch);
+        return $result;
+    }
+    
     public static function postUrl ($url, $data)
     {
         //$data  = json_encode($data);    
@@ -109,34 +120,17 @@ class Duck
      */
     public function getWeather ()
     {
-        $params = [
-            'location' => $this->hefengcity,
-            'key' => $this->hefengkey
-        ];
-        $url = 'https://devapi.qweather.com/v7/weather/now';
-        $weather = $this->getUrl($url, $params);
-        return $weather;
+        return $weather = $this-get_url('https://devapi.qweather.com/v7/weather/now?location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0');
     }
 
     public function getIndices ()
     {
-        $params = [
-            'type' => '3',//穿衣指数3 洗车指数2 运动指数1 ... 和风天气自查
-            'location' => $this->hefengcity,
-            'key' => $this->hefengkey
-        ];
-        $url = 'https://devapi.qweather.com/v7/indices/1d';
-        return $Indices = $this->getUrl($url, $params);
+        return $Indices = $this-get_url('https://devapi.qweather.com/v7/indices/1d?type=3&location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0');
     }
 
     public function getCity ()
     {
-        $params = [
-            'location' => $this->hefengcity,//
-            'key' => $this->hefengkey
-        ];
-        $url = 'https://geoapi.qweather.com/v2/city/lookup';
-        return $City = $this->getUrl($url, $params)['location'][0]['name'];
+        return $City = $this-get_url('https://geoapi.qweather.com/v2/city/lookup?location=101210904&key=788c69af5aa14f4dbd3581a73b6928f0');
     }
 
 
