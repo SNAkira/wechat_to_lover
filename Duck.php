@@ -114,7 +114,7 @@ class Duck
         $url = "https://devapi.qweather.com/v7/weather/now?location={}&key={}".format($location1, $key1);
         $response = get($url).json();
         $weather = $response["now"]["text"];
-        $temp = $response["now"]["temp"] + u"\N{DEGREE SIGN}" + "C";
+        $temp = $response["now"]["temp"];
         $humidity = $response["now"]["windDir"];
         return $weather, $temp, $humidity;
     }
